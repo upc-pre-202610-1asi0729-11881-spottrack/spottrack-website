@@ -39,7 +39,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class HeroSectionComponent {
   private _title: string = 'SpotTrack';
-  readonly appUrl = 'https://purple-tree-092d40a10.7.azurestaticapps.net';
+  readonly appUrl = 'https://kind-desert-06c07fc10.7.azurestaticapps.net';
 
   btnStates = Array.from({ length: 4 }, () => signal<'normal' | 'hovered'>('normal'));
   benefitKeys = [0, 1, 2, 3].map(i => `hero.benefits.${i}`);
@@ -69,7 +69,7 @@ export class HeroSectionComponent {
   protected readonly onmouseenter = onmouseenter;
 
   navigateToLogin(): void {
-    window.location.href = 'https://purple-tree-092d40a10.7.azurestaticapps.net/';
+    window.location.href = 'https://kind-desert-06c07fc10.7.azurestaticapps.net/';
   }
 }
 
