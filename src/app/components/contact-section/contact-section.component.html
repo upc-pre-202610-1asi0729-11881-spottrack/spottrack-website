@@ -1,34 +1,127 @@
 <section class="contact-section" id="contacto">
-  <div class="container">
-    <h2 class="section-title">{{'contact.title' | translate}}</h2>
 
-    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+  <!-- Fullscreen background video -->
+  <video #contactVideo class="contact-bg-video" autoplay muted loop playsinline>
+    <source src="assets/stock-video-2.mp4" type="video/mp4">
+  </video>
+  <div class="contact-bg-overlay"></div>
 
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>{{ 'contact.name.label' | translate }}</mat-label>
-        <input matInput formControlName="name" [placeholder]="'contact.name.placeholder' | translate">
-        <mat-error *ngIf="contactForm.get('name')?.hasError('required')">
-          {{'contact.name.error'|translate}}
-        </mat-error>
-      </mat-form-field>
+  <!-- Ambient glow -->
+  <div class="contact-amb contact-amb-1"></div>
+  <div class="contact-amb contact-amb-2"></div>
 
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>{{ 'contact.email.label' | translate }}</mat-label>
-        <input matInput type="email" formControlName="email" [placeholder]="'contact.email.placeholder' | translate">
-        <mat-error *ngIf="contactForm.get('email')?.hasError('email')">
-          {{'contact.email.error'|translate}}
-        </mat-error>
-      </mat-form-field>
+  <div class="contact-container">
+    <div class="contact-grid">
 
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>{{ 'contact.message.label' | translate }}</mat-label>
-        <textarea matInput rows="5" formControlName="message" [placeholder]="'contact.message.placeholder' | translate"></textarea>
-      </mat-form-field>
+      <!-- LEFT: heading + video + testimonials -->
+      <div class="contact-left">
 
-      <button mat-raised-button class="btn-submit" type="submit" [disabled]="contactForm.invalid">
-        {{ 'contact.submit' | translate }}
-      </button>
+        <div class="section-badge">Get in Touch</div>
+        <h2 class="contact-title">{{ 'contact.title' | translate }}</h2>
+        <p class="contact-subtitle">
+          Have questions about SpotTrack? Our team is ready to help you optimize every machine in your gym.
+        </p>
 
-    </form>
+        <!-- Testimonials -->
+        <div class="testimonials">
+          @for (t of testimonials; track t.name; let i = $index) {
+            <div #tCard class="testimonial-card" [style.--i]="i" [style.--tc]="t.color">
+              <div class="tcard-header">
+                <div class="tcard-avatar">
+                  <span>{{ t.initials }}</span>
+                </div>
+                <div class="tcard-meta">
+                  <span class="tcard-name">{{ t.name }}</span>
+                  <span class="tcard-role">{{ t.role }}</span>
+                </div>
+                <span class="tcard-stars">★★★★★</span>
+              </div>
+              <p class="tcard-quote">"{{ t.quote }}"</p>
+            </div>
+          }
+        </div>
+
+      </div>
+
+      <!-- RIGHT: contact form -->
+      <div class="contact-right">
+        <div class="form-card">
+
+          <div class="form-card-header">
+            <h3 class="form-title">Send us a message</h3>
+            <p class="form-subtitle">We typically reply within 24 hours.</p>
+          </div>
+
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form" novalidate>
+
+            <div class="field">
+              <label class="field-label">{{ 'contact.name.label' | translate }}</label>
+              <input
+                class="field-input"
+                formControlName="name"
+                [placeholder]="'contact.name.placeholder' | translate"
+              >
+              @if (contactForm.get('name')?.hasError('required') && contactForm.get('name')?.touched) {
+                <span class="field-error">{{ 'contact.name.error' | translate }}</span>
+              }
+            </div>
+
+            <div class="field">
+              <label class="field-label">{{ 'contact.email.label' | translate }}</label>
+              <input
+                class="field-input"
+                type="email"
+                formControlName="email"
+                [placeholder]="'contact.email.placeholder' | translate"
+              >
+              @if (contactForm.get('email')?.hasError('email') && contactForm.get('email')?.touched) {
+                <span class="field-error">{{ 'contact.email.error' | translate }}</span>
+              }
+            </div>
+
+            <div class="field">
+              <label class="field-label">{{ 'contact.message.label' | translate }}</label>
+              <textarea
+                class="field-input field-textarea"
+                formControlName="message"
+                rows="5"
+                [placeholder]="'contact.message.placeholder' | translate"
+              ></textarea>
+            </div>
+
+            <button class="btn-submit" type="submit" [disabled]="contactForm.invalid">
+              {{ 'contact.submit' | translate }}
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
   </div>
+
+  <!-- Stats ticker -->
+  <div class="ticker-section">
+    <div class="ticker-fade ticker-fade-left"></div>
+    <div class="ticker-wrap">
+      <div class="ticker-track">
+        @for (s of stats; track s.value) {
+          <div class="ticker-item">
+            <span class="ticker-value">{{ s.value }}</span>
+            <span class="ticker-label">{{ s.label }}</span>
+          </div>
+          <span class="ticker-sep" aria-hidden="true">·</span>
+        }
+        @for (s of stats; track s.label) {
+          <div class="ticker-item">
+            <span class="ticker-value">{{ s.value }}</span>
+            <span class="ticker-label">{{ s.label }}</span>
+          </div>
+          <span class="ticker-sep" aria-hidden="true">·</span>
+        }
+      </div>
+    </div>
+    <div class="ticker-fade ticker-fade-right"></div>
+  </div>
+
 </section>
