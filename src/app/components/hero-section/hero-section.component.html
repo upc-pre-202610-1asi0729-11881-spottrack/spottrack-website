@@ -1,7 +1,7 @@
-<header [@headerFadeIn] class="hero-header">
-  <h1 class="title">{{ 'nav.brand' | translate }}</h1>
+<header [@headerFadeIn] class="hero-header" [class.scrolled]="isScrolled()">
+  <h1 class="brand-title">{{ 'nav.brand' | translate }}</h1>
 
-  <nav [@navbarFadeIn] class="hero-navbar">
+  <nav class="hero-navbar">
     <button [@hoverNavBtn]="btnStates[0]()" (mouseenter)="btnStates[0].set('hovered')" (mouseleave)="btnStates[0].set('normal')" (click)="scrollToSection('hero')" class="navbar-button">
       {{ 'nav.about' | translate }}
     </button>
@@ -14,7 +14,6 @@
     <button [@hoverNavBtn]="btnStates[3]()" (mouseenter)="btnStates[3].set('hovered')" (mouseleave)="btnStates[3].set('normal')" (click)="scrollToSection('contacto')" class="navbar-button">
       {{ 'contact.title' | translate }}
     </button>
-
     <div class="login-div">
       <button class="login-btn" (click)="navigateToApp()">{{ 'nav.login' | translate }}</button>
     </div>
@@ -25,24 +24,73 @@
   </div>
 </header>
 
-<section [@heroFadeIn] class="hero-section" id="hero">
+<section class="hero-section" id="hero">
+
+  <!-- Video background -->
+  <video #heroBgVideo class="hero-video-bg" autoplay muted loop playsinline>
+    <source src="assets/stock-video-1.mp4" type="video/mp4">
+  </video>
+  <div class="hero-video-overlay"></div>
+
+  <div class="particles-layer particles-far"></div>
+  <div class="particles-layer particles-mid"></div>
+  <div class="particles-layer particles-close"></div>
+
+  <div class="float-shape shape-1"></div>
+  <div class="float-shape shape-2"></div>
+  <div class="float-shape shape-3"></div>
+  <div class="float-shape shape-4"></div>
+
   <div class="hero-wrapper">
-    <div class="hero-wrapper-info">
-      <div class="particles-overlay"></div>
-      <h1>
-        {{ 'hero.headlineStart' | translate }}
-        <span class="shimmer-text">{{ 'hero.headlineHighlight' | translate }}</span>
-        {{ 'hero.headlineEnd' | translate }}
-      </h1>
-      <p>{{ 'hero.subheadline' | translate }}</p>
+
+    <!-- Left column: text content -->
+    <div [@leftColFadeIn] class="hero-left">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        IoT-Powered Gym Management
+      </div>
+
+      <div class="hero-headline">
+        <h1>
+          {{ 'hero.headlineStart' | translate }}
+          <span class="shimmer-text">{{ 'hero.headlineHighlight' | translate }}</span>
+          {{ 'hero.headlineEnd' | translate }}
+        </h1>
+        <p class="hero-subheadline">{{ 'hero.subheadline' | translate }}</p>
+      </div>
+
+      <div class="hero-cta">
+        <button class="start-btn" (click)="navigateToApp()">{{ 'hero.cta' | translate }}</button>
+        <button class="demo-btn" (click)="scrollToSection('features')">{{ 'hero.demo' | translate }}</button>
+      </div>
+
+      <div class="hero-benefits">
+        @for (key of benefitKeys; track key) {
+          <div class="benefit-card">
+            <span class="benefit-dot"></span>
+            <span>{{ key | translate }}</span>
+          </div>
+        }
+      </div>
     </div>
 
-    <button class="start-btn" (click)="navigateToApp()">{{ 'hero.cta' | translate }}</button>
-
-    <div class="hero-benefits">
-      @for (key of benefitKeys; track key) {
-        <h2>{{ key | translate }}</h2>
-      }
+    <!-- Right column: dashboard mockup -->
+    <div [@rightColFadeIn] class="hero-right">
+      <div class="mockup-glow"></div>
+      <div class="mockup-frame">
+        <div class="mockup-chrome">
+          <div class="chrome-dots">
+            <span class="dot-red"></span>
+            <span class="dot-yellow"></span>
+            <span class="dot-green"></span>
+          </div>
+          <div class="chrome-bar">kind-desert-06c07fc10.7.azurestaticapps.net/dashboard</div>
+        </div>
+        <div class="mockup-screen">
+          <img src="assets/dashboard.png" alt="SpotTrack Dashboard" />
+        </div>
+      </div>
     </div>
+
   </div>
 </section>
