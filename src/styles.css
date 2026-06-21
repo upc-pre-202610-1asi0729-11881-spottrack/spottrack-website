@@ -1,4 +1,6 @@
 @import '@angular/material/prebuilt-themes/cyan-orange.css';
+@import "@fontsource/istok-web/index.css";
+@import "@fontsource/istok-web/700.css";
 
 * {
   box-sizing: border-box;
