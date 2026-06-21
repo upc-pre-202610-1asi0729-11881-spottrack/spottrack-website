@@ -1,0 +1,23 @@
+.footer-section {
+  /* Fondo oscuro según el diseño de la landing */
+  background-color: #0f0f0f;
+  /* Línea superior sutil que se ve en la imagen */
+  border-top: 1px solid #1a1a1a;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.container p {
+  color: #4b5563; /* Color grisáceo para el texto secundario */
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem; /* Tamaño pequeño como en la referencia */
+  letter-spacing: 0.025em;
+  margin: 0;
+}
+
+/* Opcional: Ajuste para pantallas pequeñas */
+@media (max-width: 640px) {
+  .footer-section {
+    padding: 30px 15px;
+  }
+}
