@@ -1,247 +1,494 @@
 @import "@fontsource/istok-web/index.css";
-@import "@fontsource/istok-web/700.css"; /* Para las negritas */
+@import "@fontsource/istok-web/700.css";
 
 * {
   margin: 0;
   padding: 0;
   font-family: "Istok Web";
-  font-size: 16px;
+  box-sizing: border-box;
 }
 
+/* ===========================
+   HEADER
+   =========================== */
 
 .hero-header {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 0 48px;
+  height: 68px;
+  background: #000000;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.4s ease;
+}
+
+.hero-header.scrolled {
+  border-bottom-color: rgba(74, 222, 128, 0.18);
+}
+
+.brand-title {
+  font-size: 22px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #4ade80 0%, #40e0d0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.5px;
+  user-select: none;
+}
+
+.hero-navbar {
+  display: flex;
   justify-content: center;
   align-items: center;
-  background: #000000 ;
-  color: white;
-  position: relative;
-  z-index: 1;
-  gap: 8%;
-}
-
-.language-switcher {
-  padding: 10%;
-}
-
-
-.hero-navbar{
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10%;
-  justify-content: center;
+  gap: 4px;
 }
 
 .navbar-button {
   border: none;
   background: none;
-  font-size: 24px;
+  font-size: 14px;
+  font-family: "Istok Web";
   cursor: pointer;
-  color: gray;
+  color: rgba(255, 255, 255, 0.45);
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
-
-h1 {
-  font-size: 40px;
+.navbar-button:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.06);
 }
+
+.login-div {
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.login-btn {
+  background: linear-gradient(135deg, #4ade80, #40e0d0);
+  color: #000;
+  border: none;
+  padding: 8px 22px;
+  border-radius: 8px;
+  font-family: "Istok Web";
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.login-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.language-switcher {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* ===========================
+   HERO SECTION
+   =========================== */
 
 .hero-section {
+  position: relative;
   display: flex;
   justify-content: center;
-  padding: 6%;
-  text-align: center;
+  align-items: center;
+  min-height: calc(100vh - 68px);
   background: #000000;
-  color:white;
-  perspective: 1000px;
+  color: white;
   overflow: hidden;
+  perspective: 1200px;
 }
 
-/* Corregido: position bien escrito y nombres unificados */
-.hero-section::before,
-.hero-section::after,
-.particles-overlay {
-  content: '';
-  position: absolute; /* Arreglado el typo */
+/* ---- Video background ---- */
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  z-index: 1;
+}
+
+/* ---- Particle layers ---- */
+.particles-layer {
+  position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background-image:
-    radial-gradient(#ffffff 1px, transparent 1px),
-    radial-gradient(#ffffff 1px, transparent 1px);
-  background-size: 50px 50px;
-  background-position: 0 0, 25px 25px;
-  opacity: 0.4; /* Súbele un pelo para probar */
-  will-change: transform;
-  transform-style: preserve-3d;
-  z-index: 0; /* Asegúrate que estén al fondo */
   pointer-events: none;
+  z-index: 2;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
-/* --- Capa 1: Fondo Lejano --- */
-.hero-section::before {
-  /* Nombre | Duración | Curva de tiempo | Repetición */
-  animation: particleFloatLejos 30s ease-in-out infinite;
+.particles-far {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.12;
+  animation: particleFar 32s ease-in-out infinite;
 }
 
-/* --- Capa 2: Medio --- */
-.hero-section::after {
-  background-size: 80px 80px;
-  opacity: 0.2;
-  /* Le sumamos 'reverse' para que gire al lado contrario y se vea más 3D */
-  animation: particleFloatMedio 20s ease-in-out infinite reverse;
+.particles-mid {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.45) 1px, transparent 1px);
+  background-size: 96px 96px;
+  opacity: 0.05;
+  animation: particleMid 22s ease-in-out infinite reverse;
 }
 
-/* --- Capa 3: Cerca --- */
-.particles-overlay {
-  background-image: radial-gradient(#4ade80 2px, transparent 2px);
-  background-size: 120px 120px;
-  opacity: 0.15;
-  animation: particleFloatCerca 15s ease-in-out infinite;
+.particles-close {
+  background-image: radial-gradient(circle, rgba(74, 222, 128, 0.65) 1.5px, transparent 1.5px);
+  background-size: 140px 140px;
+  opacity: 0.09;
+  animation: particleClose 16s ease-in-out infinite;
 }
 
+/* ---- Floating geometric shapes ---- */
+.float-shape {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+}
 
+.shape-1 {
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(74, 222, 128, 0.22);
+  background: rgba(74, 222, 128, 0.03);
+  border-radius: 14px;
+  top: 18%;
+  left: 4%;
+  animation: floatA 9s ease-in-out infinite;
+}
+
+.shape-2 {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(64, 224, 208, 0.2);
+  background: rgba(64, 224, 208, 0.03);
+  border-radius: 50%;
+  bottom: 28%;
+  left: 7%;
+  animation: floatB 12s ease-in-out infinite reverse;
+}
+
+.shape-3 {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 204, 0, 0.18);
+  background: rgba(255, 204, 0, 0.025);
+  border-radius: 50%;
+  top: 14%;
+  right: 3%;
+  animation: floatA 11s ease-in-out infinite reverse;
+}
+
+.shape-4 {
+  width: 26px;
+  height: 26px;
+  border: 1px solid rgba(74, 222, 128, 0.18);
+  background: rgba(74, 222, 128, 0.025);
+  border-radius: 6px;
+  bottom: 20%;
+  right: 5%;
+  transform: rotate(45deg);
+  animation: floatB 8s ease-in-out infinite;
+}
+
+/* ===========================
+   TWO-COLUMN LAYOUT
+   =========================== */
 
 .hero-wrapper {
   position: relative;
-  z-index: 1;
-  display:flex;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  padding: 60px 60px;
+}
+
+/* ---- Left column: text ---- */
+.hero-left {
+  display: flex;
   flex-direction: column;
-  row-gap: 20%;
-  justify-content: center;
+  gap: 32px;
 }
 
-.hero-wrapper button {
-  width: 10%;
-  align-self: center;
-
-}
-
-
-.hero-section h1 {
-  font-size: 70px;
-}
-
-.hero-section h2 {
-  font-size: 32px;
-}
-
-.hero-benefits {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 5fr));
-  gap: 20%;
-}
-
-
-
-.hero-section button {
-  border: none;
-  background-color: turquoise;
-  color: black;
-  border-radius: 8px;
-  padding: 0.8%;
-  transition: 0.3s ease-in-out;
-  cursor: pointer;
-
-}
-
-.hero-section button:hover {
-  background-color: gray;
-  transition: 0.2s ease-in-out;
-}
-
-.login-btn {
-  background-color: yellow;
-  color: black;
-  border: none;
-  width: 300%;
-  height: 120%;
-  border-radius: 8px;
-  font-family: "Istok Web";
+.hero-badge {
+  display: inline-flex;
   align-items: center;
-  cursor: pointer;
-
-  background-size: 200% auto; /* El fondo es el doble de ancho que el botón */
-  background-image: linear-gradient(to right, yellow, yellow); /* Empezamos con amarillo */
-  transition: all 0.5s ease;
+  gap: 8px;
+  padding: 6px 18px;
+  background: rgba(74, 222, 128, 0.07);
+  border: 1px solid rgba(74, 222, 128, 0.22);
+  border-radius: 100px;
+  font-size: 13px;
+  color: #4ade80;
+  letter-spacing: 0.4px;
+  width: fit-content;
 }
 
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  min-width: 7px;
+  background: #4ade80;
+  border-radius: 50%;
+  animation: badgePulse 2.2s ease-in-out infinite;
+}
 
-.login-btn:hover {
+.hero-headline h1 {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
   color: white;
-  background: linear-gradient(
-  to right,
-  #4ade80,
-  #40e0d0,
-  #ffcc00,
-  #4ade80
-  );
-  animation: shine-button 2s linear infinite;
 }
 
-@keyframes shine-button {
-  0% {
-    background-position: 0 center;
-  }
-  100% {
-    background-position: 500% center;
-  }
+.hero-subheadline {
+  margin-top: 18px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.75;
 }
-
-.login-div {
-  display: grid;
-  align-items: center;
-}
-
-
-
 
 .shimmer-text {
-  /* 1. Colores base (Verde y Amarillo según tu imagen) */
-  color: #ffcc00; /* Color de respaldo */
-
-  /* 2. El degradado: Color1 - Brillo(Blanco/Claro) - Color2 */
+  display: inline;
   background: linear-gradient(
-    to right,
-    #4ade80 20%,
-    #fef08a 40%,
-    #fef08a 60%,
-    #40e0d0 80%
+    90deg,
+    #4ade80 0%,
+    #fef08a 28%,
+    #40e0d0 58%,
+    #4ade80 100%
   );
-  background-size: 200% auto;
-
+  background-size: 300% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shine 3s linear infinite;
-  font-weight: bold;
-  font-size: 60px;
+  font-weight: 700;
+  animation: shimmer 4s linear infinite;
 }
 
-@keyframes shine {
-  to {
-    background-position: 300% center;
-  }
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-/* CAPA LEJANA: Aumentamos la rotación para que se note el desplazamiento */
-@keyframes particleFloatLejos {
-  0%   { transform: translateZ(-400px) rotateX(0deg) rotateY(0deg); }
-  50%  { transform: translateZ(-200px) rotateX(15deg) rotateY(15deg); } /* Más rotación */
-  100% { transform: translateZ(-400px) rotateX(0deg) rotateY(0deg); }
+.start-btn {
+  background: linear-gradient(135deg, #4ade80, #40e0d0);
+  color: #000;
+  border: none;
+  padding: 13px 30px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: "Istok Web";
+  cursor: pointer;
+  box-shadow: 0 0 22px rgba(74, 222, 128, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: ctaPulse 3.5s ease-in-out infinite;
 }
 
-/* CAPA MEDIO: Hacemos que "baile" más de lado a lado */
-@keyframes particleFloatMedio {
-  0%   { transform: translateZ(0) rotateX(0deg) rotateY(0deg) translateX(-50px); }
-  50%  { transform: translateZ(100px) rotateX(-20deg) rotateY(20deg) translateX(50px); }
-  100% { transform: translateZ(0) rotateX(0deg) rotateY(0deg) translateX(-50px); }
+.start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(74, 222, 128, 0.45);
+  animation-play-state: paused;
 }
 
-/* CAPA CERCA: Esta es la que debe ser más agresiva */
-@keyframes particleFloatCerca {
-  0%   { transform: translateZ(200px) rotateX(0deg) rotateY(0deg); }
-  50%  { transform: translateZ(450px) rotateX(25deg) rotateY(-25deg); } /* ¡Casi toca la pantalla! */
-  100% { transform: translateZ(200px) rotateX(0deg) rotateY(0deg); }
+.demo-btn {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 13px 30px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: "Istok Web";
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.demo-btn:hover {
+  color: white;
+  border-color: rgba(74, 222, 128, 0.35);
+  background: rgba(74, 222, 128, 0.05);
+}
+
+.hero-benefits {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.benefit-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 100px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: border-color 0.25s ease, color 0.25s ease;
+  cursor: default;
+}
+
+.benefit-card:hover {
+  border-color: rgba(74, 222, 128, 0.28);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.benefit-dot {
+  width: 5px;
+  height: 5px;
+  min-width: 5px;
+  background: #4ade80;
+  border-radius: 50%;
+}
+
+/* ---- Right column: dashboard mockup ---- */
+.hero-right {
+  position: relative;
+}
+
+.mockup-glow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(74, 222, 128, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mockup-frame {
+  position: relative;
+  z-index: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(74, 222, 128, 0.18);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 32px 64px rgba(0, 0, 0, 0.7),
+    0 0 48px rgba(74, 222, 128, 0.07);
+  transform: perspective(900px) rotateY(-8deg) rotateX(3deg);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.mockup-frame:hover {
+  transform: perspective(900px) rotateY(-2deg) rotateX(1deg);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 40px 80px rgba(0, 0, 0, 0.7),
+    0 0 64px rgba(74, 222, 128, 0.13);
+}
+
+.mockup-chrome {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  background: #111111;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.chrome-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.chrome-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot-red    { background: #ff5f57; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green  { background: #28c840; }
+
+.chrome-bar {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.25);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mockup-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ===========================
+   KEYFRAMES
+   =========================== */
+
+@keyframes shimmer {
+  to { background-position: 300% center; }
+}
+
+@keyframes badgePulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 0 22px rgba(74, 222, 128, 0.22); }
+  50%       { box-shadow: 0 0 38px rgba(74, 222, 128, 0.42); }
+}
+
+@keyframes floatA {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-18px) rotate(6deg); }
+}
+
+@keyframes floatB {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(14px) scale(1.08); }
+}
+
+@keyframes particleFar {
+  0%, 100% { transform: translateZ(-400px) rotateX(0deg)   rotateY(0deg);  }
+  50%       { transform: translateZ(-200px) rotateX(10deg)  rotateY(10deg); }
+}
+
+@keyframes particleMid {
+  0%, 100% { transform: translateZ(0)    rotateX(0deg)   rotateY(0deg)   translateX(-40px); }
+  50%       { transform: translateZ(80px) rotateX(-14deg) rotateY(14deg)  translateX(40px);  }
+}
+
+@keyframes particleClose {
+  0%, 100% { transform: translateZ(160px) rotateX(0deg)  rotateY(0deg);   }
+  50%       { transform: translateZ(340px) rotateX(18deg) rotateY(-18deg); }
 }

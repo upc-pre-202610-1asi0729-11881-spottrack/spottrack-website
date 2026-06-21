@@ -1,9 +1,7 @@
-import { Component, signal } from '@angular/core';
-import { trigger, state, transition, animate, style } from '@angular/animations';
-import { Router } from '@angular/router';
+import { Component, signal, HostListener, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { trigger, transition, animate, style } from '@angular/animations';
 import { LanguageSwitcher } from '../language-switcher/language-switcher';
 import { TranslatePipe } from '@ngx-translate/core';
-
 
 @Component({
   selector: 'hero-section',
@@ -13,44 +11,47 @@ import { TranslatePipe } from '@ngx-translate/core';
   animations: [
     trigger('headerFadeIn', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(-20px)' }),
-        animate('600ms ease-out', style({ opacity: 1, transform: 'translateY(0px)' })),
+        style({ opacity: 0, transform: 'translateY(-24px)' }),
+        animate('500ms ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
       ]),
     ]),
-    trigger('navbarFadeIn', [
+    trigger('leftColFadeIn', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(-20px)' }),
-        animate('900ms ease-out', style({ opacity: 1, transform: 'translateY(0px)' })),
+        style({ opacity: 0, transform: 'translateX(-32px)' }),
+        animate('650ms 200ms ease-out', style({ opacity: 1, transform: 'translateX(0)' })),
       ]),
     ]),
-    trigger('heroFadeIn', [
+    trigger('rightColFadeIn', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(-20px)' }),
-        animate('1200ms ease-out', style({ opacity: 1, transform: 'translateY(0px)' })),
+        style({ opacity: 0, transform: 'translateX(40px)' }),
+        animate('700ms 400ms ease-out', style({ opacity: 1, transform: 'translateX(0)' })),
       ]),
     ]),
-    //hover buttons
     trigger('hoverNavBtn', [
-      state('hovered', style({ color: 'white' })),
-      state('normal', style({ color: 'gray' })),
-      transition('normal <=> hovered', animate('300ms ease-in-out')),
+      transition('normal => hovered', animate('200ms ease-in-out')),
+      transition('hovered => normal', animate('200ms ease-in-out')),
     ]),
   ],
 })
-export class HeroSectionComponent {
-  private _title: string = 'SpotTrack';
+export class HeroSectionComponent implements AfterViewInit {
+  @ViewChild('heroBgVideo') heroBgVideo!: ElementRef<HTMLVideoElement>;
   readonly appUrl = 'https://kind-desert-06c07fc10.7.azurestaticapps.net';
 
   btnStates = Array.from({ length: 4 }, () => signal<'normal' | 'hovered'>('normal'));
   benefitKeys = [0, 1, 2, 3].map(i => `hero.benefits.${i}`);
+  isScrolled = signal(false);
 
-  get Title() {
-    return this._title;
+  ngAfterViewInit(): void {
+    const video = this.heroBgVideo?.nativeElement;
+    if (video) {
+      video.muted = true;
+      video.play().catch(() => {});
+    }
   }
 
-  public setHover(index: number, isHovered: boolean): void {
-    const newState = isHovered ? 'hovered' : 'normal';
-    this.btnStates[index].set(newState);
+  @HostListener('window:scroll')
+  onScroll() {
+    this.isScrolled.set(window.scrollY > 20);
   }
 
   scrollToSection(id: string): void {
@@ -65,11 +66,4 @@ export class HeroSectionComponent {
   navigateToApp(): void {
     window.open(this.appUrl, '_blank');
   }
-
-  protected readonly onmouseenter = onmouseenter;
-
-  navigateToLogin(): void {
-    window.location.href = 'https://kind-desert-06c07fc10.7.azurestaticapps.net/';
-  }
 }
-
