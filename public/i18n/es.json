@@ -1,0 +1,129 @@
+{
+  "nav": {
+    "brand": "SpotTrack",
+    "about": "Nosotros",
+    "features": "Funciones",
+    "pricing": "Precios",
+    "login": "Iniciar Sesión",
+    "freeDemo": "Demo Gratis"
+  },
+  "hero": {
+    "headlineStart": "Transforma la gestión de tu",
+    "headlineHighlight": "gimnasio",
+    "headlineEnd": "con tecnología inteligente",
+    "subheadline": "Telemetría IoT en tiempo real para optimizar el uso de equipos, reducir tiempos de espera y maximizar la satisfacción de tus clientes",
+    "cta": "Comenzar Ahora →",
+    "demo": "Ver Demo",
+    "benefits": [
+      "Reduce tiempos de espera",
+      "Monitoreo 24/7",
+      "Alertas automáticas",
+      "Dashboard en tiempo real"
+    ]
+  },
+  "about": {
+    "title": "Nosotros",
+    "mission": {
+      "title": "Misión",
+      "description": "Revolucionar la industria del fitness mediante soluciones IoT que permitan a los gimnasios operar de manera más eficiente y a los clientes entrenar sin interrupciones."
+    },
+    "vision": {
+      "title": "Visión",
+      "description": "Ser la plataforma de telemetría líder en Perú para la gestión inteligente de gimnasios, estableciendo el estándar en tecnología de monitoreo de equipos."
+    },
+    "product": {
+      "title": "Producto",
+      "description": "Una plataforma SaaS completa que combina sensores Edge IoT, almacenamiento en la nube y análisis predictivo para transformar la experiencia del gimnasio."
+    }
+  },
+  "solution": {
+    "title": "La Solución",
+    "subtitle": "SpotTrack: Gestión inteligente todo en uno",
+    "iotSensors": {
+      "title": "Sensores IoT Edge",
+      "description": "Hardware de telemetría instalado en cada máquina para detectar uso en tiempo real sin intervención manual."
+    },
+    "cloudStorage": {
+      "title": "Almacenamiento en la Nube",
+      "description": "Datos históricos seguros y escalables para análisis de tendencias y proyecciones a largo plazo."
+    },
+    "realTimeMonitor": {
+      "title": "Monitoreo en Tiempo Real",
+      "description": "Mapa de calor actualizado cada segundo mostrando disponibilidad de equipos para clientes y administradores."
+    },
+    "maintenanceAlerts": {
+      "title": "Alertas de Mantenimiento",
+      "description": "Sistema predictivo que genera tickets automáticos cuando los equipos superan umbrales de horas seguras de uso."
+    },
+    "analyticDashboard": {
+      "title": "Dashboard Analítico",
+      "description": "Panel gerencial con gráficos de uso, picos de estrés, equipos subutilizados y cálculo de ROI."
+    },
+    "jwtSecurity": {
+      "title": "Seguridad JWT",
+      "description": "Autenticación robusta con tokens JWT para proteger datos sensibles de clientes y operaciones."
+    }
+  },
+  "pricing": {
+    "title": "Planes y Precios",
+    "popular": "Más Popular",
+    "perMonth": "/mes",
+    "buyNow" : "Comprar Ahora",
+    "basic": {
+      "name": "Basic",
+      "price": "$69",
+      "features": [
+        "Hasta 20 máquinas monitoreadas",
+        "Mapa de calor en tiempo real",
+        "1 sede",
+        "Soporte por email"
+      ],
+      "cta": "Demo Gratis"
+    },
+    "mid": {
+      "name": "Mid",
+      "price": "$109",
+      "features": [
+        "Hasta 50 máquinas monitoreadas",
+        "Mantenimiento predictivo",
+        "Hasta 3 sedes",
+        "Dashboard analítico completo",
+        "Soporte prioritario 24/7"
+      ],
+      "cta": "Comenzar Ahora →"
+    },
+    "platinum": {
+      "name": "Platinum",
+      "price": "$189",
+      "features": [
+        "Máquinas ilimitadas",
+        "Análisis predictivo de ROI",
+        "Sedes ilimitadas",
+        "API personalizada",
+        "Gestor de cuenta dedicado"
+      ],
+      "cta": "Contactar"
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "name": {
+      "label": "Nombre",
+      "placeholder": "Tu nombre completo",
+      "error": "El nombre es obligatorio"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "tu@email.com",
+      "error": "Ingresa un correo válido"
+    },
+    "message": {
+      "label": "Mensaje",
+      "placeholder": "Cuéntanos sobre tu gimnasio y tus necesidades"
+    },
+    "submit": "Enviar"
+  },
+  "footer": {
+    "copyright": "© 2026 SpotTrack. Todos los derechos reservados."
+  }
+}

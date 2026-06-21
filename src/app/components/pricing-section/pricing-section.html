@@ -1,0 +1,109 @@
+<section class="pricing-section" id="pricing">
+
+  <div class="pricing-bg pricing-bg-1"></div>
+  <div class="pricing-bg pricing-bg-2"></div>
+
+  <!-- Background decorative graphs -->
+  <div class="bg-graph bg-graph-1">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="bgGrad1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f7b731" stop-opacity="0.20"/>
+          <stop offset="100%" stop-color="#f7b731" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path class="bg-area" d="M0,160 L160,140 L320,125 L480,100 L600,115 L720,80 L880,55 L1040,70 L1200,38 L1320,22 L1440,8 L1440,200 L0,200 Z" fill="url(#bgGrad1)"/>
+      <polyline class="bg-line bg-line-yellow" points="0,160 160,140 320,125 480,100 600,115 720,80 880,55 1040,70 1200,38 1320,22 1440,8"/>
+    </svg>
+  </div>
+
+  <div class="bg-graph bg-graph-2">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="bgGrad2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#40e0d0" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#40e0d0" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path class="bg-area" d="M0,185 L200,170 L360,175 L520,150 L680,158 L840,120 L1000,105 L1160,80 L1300,60 L1440,40 L1440,200 L0,200 Z" fill="url(#bgGrad2)"/>
+      <polyline class="bg-line bg-line-teal" points="0,185 200,170 360,175 520,150 680,158 840,120 1000,105 1160,80 1300,60 1440,40"/>
+    </svg>
+  </div>
+
+  <div class="bg-graph bg-graph-3">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="bgGrad3" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.14"/>
+          <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path class="bg-area" d="M0,175 L280,155 L560,140 L720,120 L920,95 L1120,70 L1280,50 L1440,28 L1440,200 L0,200 Z" fill="url(#bgGrad3)"/>
+      <polyline class="bg-line bg-line-orange" points="0,175 280,155 560,140 720,120 920,95 1120,70 1280,50 1440,28"/>
+    </svg>
+  </div>
+
+  <div class="pricing-container">
+
+    <div class="pricing-header">
+      <div class="section-badge">Simple Pricing</div>
+      <h2 class="pricing-title">{{ 'pricing.title' | translate }}</h2>
+    </div>
+
+    <div class="pricing-grid">
+      @for (plan of plans; track plan.key; let i = $index) {
+        <div #planCard class="plan-card" [class.popular]="plan.popular" [style.--i]="i">
+
+          @if (plan.popular) {
+            <div class="popular-badge">
+              <span class="popular-dot"></span>
+              {{ 'pricing.popular' | translate }}
+            </div>
+          }
+
+          <div class="card-head">
+            <h3 class="plan-name">{{ ('pricing.' + plan.key + '.name') | translate }}</h3>
+            <div class="plan-price">
+              <span class="price-value">{{ ('pricing.' + plan.key + '.price') | translate }}</span>
+              <span class="price-period">{{ 'pricing.perMonth' | translate }}</span>
+            </div>
+          </div>
+
+          <!-- Animated graph -->
+          <div class="chart-wrap">
+            <span class="chart-label">Equipment Uptime</span>
+            <svg class="plan-chart" viewBox="0 0 200 64" preserveAspectRatio="none">
+              <line class="chart-ref" x1="0" y1="16" x2="200" y2="16"/>
+              <line class="chart-ref" x1="0" y1="32" x2="200" y2="32"/>
+              <line class="chart-ref" x1="0" y1="48" x2="200" y2="48"/>
+              <path class="chart-area" [attr.d]="plan.chartArea"/>
+              <polyline class="chart-line" [attr.points]="plan.chartLine"/>
+              @for (dot of getChartDots(plan.chartLine); track dot.x; let di = $index) {
+                @if (di === 0 || di === 3 || di === 6) {
+                  <circle class="chart-dot" [attr.cx]="dot.x" [attr.cy]="dot.y" r="2.5"/>
+                }
+              }
+            </svg>
+          </div>
+
+          <ul class="features-list">
+            @for (fk of plan.featureKeys; track fk) {
+              <li class="feature-item">
+                <span class="check-icon">✓</span>
+                {{ fk | translate }}
+              </li>
+            }
+          </ul>
+
+          <div class="card-footer">
+            <button class="cta-btn" [class.cta-popular]="plan.popular" (click)="onBuyNow(plan.key)">
+              {{ 'pricing.buyNow' | translate }}
+            </button>
+          </div>
+
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

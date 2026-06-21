@@ -1,0 +1,129 @@
+{
+  "nav": {
+    "brand": "SpotTrack",
+    "about": "About",
+    "features": "Features",
+    "pricing": "Pricing",
+    "login": "Log In",
+    "freeDemo": "Free Demo"
+  },
+  "hero": {
+    "headlineStart": "Transform your",
+    "headlineHighlight": "gym",
+    "headlineEnd": "management with intelligent technology",
+    "subheadline": "Real-time IoT telemetry to optimize equipment usage, reduce wait times, and maximize your clients' satisfaction",
+    "cta": "Get Started →",
+    "demo": "Watch Demo",
+    "benefits": [
+      "Reduce wait times",
+      "24/7 Monitoring",
+      "Automatic alerts",
+      "Real-time dashboard"
+    ]
+  },
+  "about": {
+    "title": "About Us",
+    "mission": {
+      "title": "Mission",
+      "description": "Revolutionize the fitness industry through IoT solutions that allow gyms to operate more efficiently and clients to train without interruptions."
+    },
+    "vision": {
+      "title": "Vision",
+      "description": "To be the leading telemetry platform in Peru for intelligent gym management, setting the standard in equipment monitoring technology."
+    },
+    "product": {
+      "title": "Product",
+      "description": "A complete SaaS platform that combines Edge IoT sensors, cloud storage, and predictive analytics to transform the gym experience."
+    }
+  },
+  "solution": {
+    "title": "The Solution",
+    "subtitle": "SpotTrack: All-in-one intelligent management",
+    "iotSensors": {
+      "title": "Edge IoT Sensors",
+      "description": "Telemetry hardware installed on every machine to detect usage in real time without manual intervention."
+    },
+    "cloudStorage": {
+      "title": "Cloud Storage",
+      "description": "Secure and scalable historical data for trend analysis and long-term projections."
+    },
+    "realTimeMonitor": {
+      "title": "Real-Time Monitoring",
+      "description": "Heat map updated every second showing equipment availability for clients and administrators."
+    },
+    "maintenanceAlerts": {
+      "title": "Maintenance Alerts",
+      "description": "Predictive system that automatically generates tickets when equipment exceeds safe usage hour thresholds."
+    },
+    "analyticDashboard": {
+      "title": "Analytics Dashboard",
+      "description": "Management panel with usage charts, stress peaks, underutilized equipment, and ROI calculation."
+    },
+    "jwtSecurity": {
+      "title": "JWT Security",
+      "description": "Robust authentication with JWT tokens to protect sensitive client data and operations."
+    }
+  },
+  "pricing": {
+    "title": "Plans & Pricing",
+    "popular": "Most Popular",
+    "perMonth": "/mo",
+    "buyNow" : "Buy Now",
+    "basic": {
+      "name": "Basic",
+      "price": "$69",
+      "features": [
+        "Up to 20 monitored machines",
+        "Real-time heat map",
+        "1 location",
+        "Email support"
+      ],
+      "cta": "Free Demo"
+    },
+    "mid": {
+      "name": "Mid",
+      "price": "$109",
+      "features": [
+        "Up to 50 monitored machines",
+        "Predictive maintenance",
+        "Up to 3 locations",
+        "Full analytics dashboard",
+        "Priority 24/7 support"
+      ],
+      "cta": "Get Started →"
+    },
+    "platinum": {
+      "name": "Platinum",
+      "price": "$189",
+      "features": [
+        "Unlimited machines",
+        "Predictive ROI analysis",
+        "Unlimited locations",
+        "Custom API",
+        "Dedicated account manager"
+      ],
+      "cta": "Contact Us"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "name": {
+      "label": "Name",
+      "placeholder": "Your full name",
+      "error": "The name is required"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "you@email.com",
+      "error": "Enter a valid email address"
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Tell us about your gym and your needs"
+    },
+    "submit": "Send"
+  },
+  "footer": {
+    "copyright": "© 2026 SpotTrack. All rights reserved."
+  }
+}

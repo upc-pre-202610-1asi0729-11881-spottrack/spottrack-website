@@ -1,0 +1,507 @@
+/* ===========================
+   SECTION
+   =========================== */
+
+.pricing-section {
+  padding: 110px 0;
+  background: #060606;
+  font-family: 'Istok Web', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-bg {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pricing-bg-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(247, 183, 49, 0.07) 0%, transparent 65%);
+  top: -150px;
+  left: -100px;
+  filter: blur(80px);
+  animation: bgPulse 11s ease-in-out infinite;
+}
+
+.pricing-bg-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(247, 183, 49, 0.05) 0%, transparent 65%);
+  bottom: -100px;
+  right: -80px;
+  filter: blur(90px);
+  animation: bgPulse 14s ease-in-out infinite reverse;
+}
+
+.pricing-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===========================
+   HEADER
+   =========================== */
+
+.pricing-header {
+  text-align: center;
+  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 16px;
+  background: rgba(247, 183, 49, 0.08);
+  border: 1px solid rgba(247, 183, 49, 0.22);
+  border-radius: 100px;
+  font-size: 11px;
+  color: #f7b731;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.pricing-title {
+  color: white;
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+/* ===========================
+   GRID
+   =========================== */
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* ===========================
+   CARDS
+   =========================== */
+
+.plan-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.026);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.065);
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+  color: white;
+
+  /* Scroll-in */
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity  0.55s ease calc(var(--i, 0) * 100ms),
+    transform 0.55s ease calc(var(--i, 0) * 100ms),
+    border-color 0.3s ease,
+    box-shadow   0.3s ease,
+    background   0.3s ease;
+}
+
+.plan-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.plan-card:not(:hover) {
+  transition:
+    opacity    0.55s ease calc(var(--i, 0) * 100ms),
+    transform  0.4s ease,
+    border-color 0.3s ease,
+    box-shadow   0.3s ease,
+    background   0.3s ease;
+}
+
+.plan-card:hover {
+  border-color: rgba(247, 183, 49, 0.28);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(247, 183, 49, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Shine sweep */
+.plan-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.04) 40%,
+    rgba(255, 255, 255, 0.07) 50%,
+    rgba(255, 255, 255, 0.04) 60%,
+    transparent
+  );
+  pointer-events: none;
+  transition: left 0.65s ease;
+  z-index: 1;
+}
+
+.plan-card:hover::before { left: 130%; }
+
+/* Top accent line */
+.plan-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #f7b731, transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+}
+
+.plan-card:hover::after { opacity: 0.65; }
+
+/* Popular card */
+.plan-card.popular {
+  background: rgba(247, 183, 49, 0.04);
+  border-color: rgba(247, 183, 49, 0.24);
+  animation: popularPulse 3.5s ease-in-out infinite;
+}
+
+.plan-card.popular:hover {
+  animation-play-state: paused;
+  background: rgba(247, 183, 49, 0.07);
+}
+
+@keyframes popularPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(247, 183, 49, 0.08),
+      0 0 0 1px rgba(247, 183, 49, 0.16),
+      inset 0 0 16px rgba(247, 183, 49, 0.02);
+  }
+  50% {
+    box-shadow:
+      0 0 44px rgba(247, 183, 49, 0.18),
+      0 0 0 1px rgba(247, 183, 49, 0.32),
+      inset 0 0 28px rgba(247, 183, 49, 0.04);
+  }
+}
+
+/* ===========================
+   POPULAR BADGE
+   =========================== */
+
+.popular-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f7b731;
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 16px;
+  border-radius: 999px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 3;
+}
+
+.popular-dot {
+  width: 6px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  animation: popDot 1.6s ease-in-out infinite;
+}
+
+@keyframes popDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ===========================
+   CARD HEAD
+   =========================== */
+
+.card-head {
+  position: relative;
+  z-index: 3;
+  padding-top: 8px;
+}
+
+.plan-name {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.price-value {
+  color: #f7b731;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.price-period {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 13px;
+}
+
+/* ===========================
+   ANIMATED CHART
+   =========================== */
+
+.chart-wrap {
+  position: relative;
+  z-index: 3;
+}
+
+.chart-label {
+  display: block;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.plan-chart {
+  display: block;
+  width: 100%;
+  height: 64px;
+  overflow: visible;
+}
+
+.chart-ref {
+  stroke: rgba(255, 255, 255, 0.04);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.chart-area {
+  fill: rgba(247, 183, 49, 0.07);
+  opacity: 0;
+  transition: opacity 0.6s ease 0.4s;
+}
+
+.plan-card.visible .chart-area { opacity: 1; }
+
+.plan-card.popular .chart-area { fill: rgba(247, 183, 49, 0.12); }
+
+.chart-line {
+  fill: none;
+  stroke: #f7b731;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+}
+
+.plan-card.visible .chart-line { stroke-dashoffset: 0; }
+
+.plan-card.popular .chart-line { stroke: #f7b731; stroke-width: 2.2; }
+
+.chart-dot {
+  fill: #f7b731;
+  stroke: rgba(0, 0, 0, 0.6);
+  stroke-width: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease 1.7s;
+}
+
+.plan-card.visible .chart-dot { opacity: 1; }
+
+/* ===========================
+   FEATURES LIST
+   =========================== */
+
+.features-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 3;
+  flex: 1;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+
+.check-icon {
+  color: #f7b731;
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: 13px;
+}
+
+/* ===========================
+   CARD FOOTER / BUTTON
+   =========================== */
+
+.card-footer {
+  position: relative;
+  z-index: 3;
+  padding-top: 4px;
+}
+
+.cta-btn {
+  width: 100%;
+  padding: 13px 0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Istok Web', sans-serif;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  border: 1px solid rgba(247, 183, 49, 0.25);
+  background: rgba(247, 183, 49, 0.06);
+  color: #f7b731;
+}
+
+.cta-btn:hover {
+  background: rgba(247, 183, 49, 0.12);
+  border-color: rgba(247, 183, 49, 0.45);
+  transform: translateY(-2px);
+}
+
+.cta-btn.cta-popular {
+  background: linear-gradient(135deg, #f7b731, #f59e0b);
+  color: #000;
+  border: none;
+  box-shadow: 0 0 22px rgba(247, 183, 49, 0.3);
+}
+
+.cta-btn.cta-popular:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 36px rgba(247, 183, 49, 0.5);
+}
+
+/* ===========================
+   BACKGROUND GRAPHS
+   =========================== */
+
+.bg-graph {
+  position: absolute;
+  width: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-graph-1 { top: -10px; }
+.bg-graph-2 { bottom: -10px; transform: scaleX(-1); }
+.bg-graph-3 { top: 38%; }
+
+.bg-graph svg {
+  display: block;
+  width: 100%;
+  height: 200px;
+}
+
+/* Area fill */
+.bg-area {
+  opacity: 0;
+  animation: bgAreaFade 11s ease-in-out infinite;
+}
+
+.bg-graph-1 .bg-area { animation-delay: 0s; }
+.bg-graph-2 .bg-area { animation-delay: -3.8s; }
+.bg-graph-3 .bg-area { animation-delay: -7.2s; }
+
+/* Line draw */
+.bg-line {
+  fill: none;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: bgLineDraw 11s ease-in-out infinite;
+}
+
+.bg-line-yellow { stroke: #f7b731; }
+.bg-line-teal   { stroke: #40e0d0; }
+.bg-line-orange { stroke: #f59e0b; }
+
+.bg-graph-1 .bg-line { animation-delay: 0s; }
+.bg-graph-2 .bg-line { animation-delay: -3.8s; }
+.bg-graph-3 .bg-line { animation-delay: -7.2s; }
+
+@keyframes bgLineDraw {
+  0%   { stroke-dashoffset: 2000; opacity: 0; }
+  8%   { opacity: 0.14; }
+  68%  { stroke-dashoffset: 0;    opacity: 0.10; }
+  85%  { stroke-dashoffset: 0;    opacity: 0; }
+  100% { stroke-dashoffset: 2000; opacity: 0; }
+}
+
+@keyframes bgAreaFade {
+  0%   { opacity: 0; }
+  18%  { opacity: 1; }
+  68%  { opacity: 1; }
+  85%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* ===========================
+   KEYFRAMES
+   =========================== */
+
+@keyframes bgPulse {
+  0%, 100% { transform: scale(1);     opacity: 1; }
+  50%       { transform: scale(1.12);  opacity: 0.65; }
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+@media (max-width: 960px) {
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
+}
+
+@media (max-width: 600px) {
+  .pricing-title { font-size: 2rem; }
+  .pricing-container { padding: 0 24px; }
+}
