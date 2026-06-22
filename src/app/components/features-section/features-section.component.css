@@ -335,31 +335,6 @@
   z-index: 3;
 }
 
-.card-footer {
-  margin-top: 6px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  position: relative;
-  z-index: 3;
-}
-
-.card-link {
-  font-size: 13px;
-  color: var(--card-color, #f7b731);
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  user-select: none;
-}
-
-.card-arrow {
-  display: inline-block;
-  transition: transform 0.25s ease;
-}
-
-.feature-card:hover .card-arrow {
-  transform: translateX(5px);
-}
 
 /* ===========================
    FLOATING WEIGHTS
