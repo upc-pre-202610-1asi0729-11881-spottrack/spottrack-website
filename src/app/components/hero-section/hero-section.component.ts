@@ -35,7 +35,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class HeroSectionComponent implements AfterViewInit {
   @ViewChild('heroBgVideo') heroBgVideo!: ElementRef<HTMLVideoElement>;
-  readonly appUrl = 'https://kind-desert-06c07fc10.7.azurestaticapps.net';
+  readonly appUrl = 'https://ashy-meadow-0d9e60a10.7.azurestaticapps.net';
 
   btnStates = Array.from({ length: 4 }, () => signal<'normal' | 'hovered'>('normal'));
   benefitKeys = [0, 1, 2, 3].map(i => `hero.benefits.${i}`);
