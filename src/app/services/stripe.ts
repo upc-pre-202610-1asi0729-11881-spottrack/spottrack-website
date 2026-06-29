@@ -1,24 +1,41 @@
 import { Injectable } from '@angular/core';
-import { loadStripe, Stripe } from '@stripe/stripe-js';
-import { environment} from '../../environments/environment.development';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
+import { environment } from '../../environments/environment';
 
-@Injectable({
-  providedIn: 'root',
-})
+interface PlanConfig {
+  tier: string;
+  amount: number;
+  currency: string;
+}
+
+const PLAN_CONFIG: Record<string, PlanConfig> = {
+  basic:    { tier: 'BASIC',    amount: 69,  currency: 'usd' },
+  mid:      { tier: 'MID',      amount: 109, currency: 'usd' },
+  platinum: { tier: 'PLATINUM', amount: 189, currency: 'usd' },
+};
+
+@Injectable({ providedIn: 'root' })
 export class StripeService {
-  private stripePromise: Promise<Stripe | null>;
+  constructor(private http: HttpClient) {}
 
-  constructor() {
-    this.stripePromise = loadStripe(environment.stripePublicKey);
-  }
-  async redirectToCheckout(planKey: string): Promise<void> {
-    await this.stripePromise;
-    // Mock — replace this object with a real HTTP call to your backend later
-    const mockUrls: Record<string, string> = {
-      basic:    'https://buy.stripe.com/test_eVqcN53St0ys17Kd32a7C04',
-      mid:      'https://buy.stripe.com/test_fZu6oHbkV4OI17Kfbaa7C03',
-      platinum: 'https://buy.stripe.com/test_4gM8wPcoZ1Cw03G8MMa7C01',
-    };
-    window.location.href = mockUrls[planKey] ?? '#';
+  async redirectToCheckout(planKey: string, userId: number = 1): Promise<void> {
+    const config = PLAN_CONFIG[planKey];
+    if (!config) return;
+
+    const body = new HttpParams()
+      .set('userId', userId.toString())
+      .set('membershipTier', config.tier)
+      .set('amount', config.amount.toString())
+      .set('currency', config.currency);
+
+    const checkoutUrl = await firstValueFrom(
+      this.http.post(`${environment.backendUrl}/api/v1/payments`, body.toString(), {
+        headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' }),
+        responseType: 'text',
+      })
+    );
+
+    window.location.href = checkoutUrl;
   }
 }
