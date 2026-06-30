@@ -1,0 +1,158 @@
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d0d0d;
+  padding: 2rem;
+  font-family: 'Istok Web', 'Inter', sans-serif;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 440px;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+}
+
+.back-link {
+  display: inline-block;
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-bottom: 1.75rem;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #f7b731;
+}
+
+.register-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.logo-dot {
+  width: 8px;
+  height: 8px;
+  background: #f7b731;
+  border-radius: 50%;
+}
+
+.register-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.register-subtitle {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin-bottom: 2rem;
+}
+
+.register-subtitle strong {
+  color: #f7b731;
+  font-weight: 600;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.field-group label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #d1d5db;
+}
+
+.field-group input {
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.field-group input:focus {
+  border-color: #f7b731;
+}
+
+.field-group input::placeholder {
+  color: #4b5563;
+}
+
+.field-error {
+  font-size: 0.78rem;
+  color: #f87171;
+}
+
+.form-error {
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.25);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #f87171;
+  font-size: 0.875rem;
+}
+
+.submit-btn {
+  padding: 0.875rem;
+  background: #f7b731;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-top: 0.25rem;
+  font-family: inherit;
+}
+
+.submit-btn:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.submit-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.plans-link {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.plans-link a {
+  color: #f7b731;
+  text-decoration: none;
+}
+
+.plans-link a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,74 @@
+<div class="register-page">
+  <div class="register-card">
+
+    <a href="/" class="back-link">← Back to SpotTrack</a>
+
+    <div class="register-logo">
+      <span class="logo-dot"></span>
+      SpotTrack
+    </div>
+
+    <h1 class="register-title">Create your account</h1>
+    <p class="register-subtitle">
+      You selected the <strong>{{ planLabel }}</strong> plan.
+      Set up your account to continue to payment.
+    </p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="register-form" novalidate>
+
+      <div class="field-group">
+        <label for="username">Email address</label>
+        <input
+          id="username"
+          type="email"
+          formControlName="username"
+          placeholder="you@company.com"
+          autocomplete="email"
+        />
+        @if (usernameCtrl.invalid && usernameCtrl.touched) {
+          <span class="field-error">Enter a valid email address</span>
+        }
+      </div>
+
+      <div class="field-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="At least 8 characters"
+          autocomplete="new-password"
+        />
+        @if (passwordCtrl.invalid && passwordCtrl.touched) {
+          <span class="field-error">Password must be at least 8 characters</span>
+        }
+      </div>
+
+      <div class="field-group">
+        <label for="confirmPassword">Confirm password</label>
+        <input
+          id="confirmPassword"
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="Repeat your password"
+          autocomplete="new-password"
+        />
+        @if (form.errors?.['passwordMismatch'] && confirmCtrl.touched) {
+          <span class="field-error">Passwords do not match</span>
+        }
+      </div>
+
+      @if (errorMsg) {
+        <div class="form-error">{{ errorMsg }}</div>
+      }
+
+      <button type="submit" class="submit-btn" [disabled]="loading">
+        {{ loading ? 'Creating account…' : 'Create account & continue' }}
+      </button>
+
+    </form>
+
+    <p class="plans-link">Want to review plans first? <a href="/#pricing">View all plans</a></p>
+
+  </div>
+</div>
