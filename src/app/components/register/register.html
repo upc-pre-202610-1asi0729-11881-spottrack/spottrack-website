@@ -16,6 +16,65 @@
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="register-form" novalidate>
 
+      <div class="field-row">
+        <div class="field-group">
+          <label for="firstName">First name</label>
+          <input
+            id="firstName"
+            type="text"
+            formControlName="firstName"
+            placeholder="Jane"
+            autocomplete="given-name"
+          />
+          @if (firstNameCtrl.invalid && firstNameCtrl.touched) {
+            <span class="field-error">This field is required</span>
+          }
+        </div>
+        <div class="field-group">
+          <label for="lastName">Last name</label>
+          <input
+            id="lastName"
+            type="text"
+            formControlName="lastName"
+            placeholder="Doe"
+            autocomplete="family-name"
+          />
+          @if (lastNameCtrl.invalid && lastNameCtrl.touched) {
+            <span class="field-error">This field is required</span>
+          }
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label for="dni">DNI / National ID</label>
+          <input
+            id="dni"
+            type="text"
+            inputmode="numeric"
+            formControlName="dni"
+            placeholder="12345678"
+          />
+          @if (dniCtrl.invalid && dniCtrl.touched) {
+            <span class="field-error">Must be exactly 8 digits</span>
+          }
+        </div>
+        <div class="field-group">
+          <label for="phoneNumber">Phone number</label>
+          <input
+            id="phoneNumber"
+            type="tel"
+            inputmode="numeric"
+            formControlName="phoneNumber"
+            placeholder="987654321"
+            autocomplete="tel"
+          />
+          @if (phoneCtrl.invalid && phoneCtrl.touched) {
+            <span class="field-error">Enter a valid phone number</span>
+          }
+        </div>
+      </div>
+
       <div class="field-group">
         <label for="username">Email address</label>
         <input
