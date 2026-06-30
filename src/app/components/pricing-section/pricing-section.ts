@@ -1,6 +1,6 @@
 import { Component, inject, AfterViewInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
-import { StripeService } from '../../services/stripe';
+import { Router } from '@angular/router';
 
 interface Plan {
   key: string;
@@ -44,7 +44,9 @@ export class PricingSection implements AfterViewInit {
     },
   ];
 
-  private stripeService = inject(StripeService);
+  private router = inject(Router);
+
+  loadingPlan: string | null = null;
 
   ngAfterViewInit(): void {
     const observer = new IntersectionObserver(
@@ -75,7 +77,7 @@ export class PricingSection implements AfterViewInit {
     });
   }
 
-  async onBuyNow(planKey: string): Promise<void> {
-    await this.stripeService.redirectToCheckout(planKey);
+  onBuyNow(planKey: string): void {
+    this.router.navigate(['/register'], { queryParams: { plan: planKey } });
   }
 }

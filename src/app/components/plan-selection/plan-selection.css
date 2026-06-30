@@ -1,0 +1,176 @@
+.plans-page {
+  min-height: 100vh;
+  background: #0d0d0d;
+  padding: 3rem 2rem;
+  font-family: 'Istok Web', 'Inter', sans-serif;
+  color: #fff;
+}
+
+.plans-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.plans-header {
+  margin-bottom: 2.5rem;
+}
+
+.back-link {
+  display: inline-block;
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #f7b731;
+}
+
+.plans-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.plans-subtitle {
+  color: #9ca3af;
+  font-size: 1rem;
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.plan-card {
+  background: #111;
+  border: 2px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 1.75rem;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+  position: relative;
+  user-select: none;
+}
+
+.plan-card:hover {
+  border-color: rgba(247, 183, 49, 0.35);
+  transform: translateY(-2px);
+}
+
+.plan-card.selected {
+  border-color: #f7b731;
+  background: rgba(247, 183, 49, 0.04);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -1px;
+  right: 1.25rem;
+  background: #f7b731;
+  color: #000;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: 0 0 8px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.plan-head {
+  margin-bottom: 1.5rem;
+}
+
+.plan-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.price-value {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #f7b731;
+  line-height: 1;
+}
+
+.price-period {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+.plan-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 1.5rem;
+  color: #d1d5db;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.plan-features .check {
+  color: #34d399;
+  margin-right: 0.4rem;
+  font-weight: 700;
+}
+
+.plan-indicator {
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 0.85rem;
+}
+
+.is-selected {
+  color: #f7b731;
+}
+
+.not-selected {
+  color: #4b5563;
+}
+
+.proceed-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.proceed-btn {
+  padding: 1rem 2.75rem;
+  background: #f7b731;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+
+.proceed-btn:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.proceed-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.secure-note {
+  color: #4b5563;
+  font-size: 0.82rem;
+}

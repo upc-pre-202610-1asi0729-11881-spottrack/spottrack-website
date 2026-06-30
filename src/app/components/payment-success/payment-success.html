@@ -1,6 +1,7 @@
 <div class="payment-result">
-  <div class="result-icon success-icon">✓</div>
+  <div class="result-icon success-icon">&#10003;</div>
   <h1>Payment Successful</h1>
-  <p>Your SpotTrack membership is now active. Check your inbox for onboarding details.</p>
-  <a class="result-btn" href="/">Back to SpotTrack</a>
+  <p>Your <strong>{{ planLabel }}</strong> membership is now active. A receipt has been sent to your email.</p>
+  <a class="result-btn" [href]="webappUrl">Go to SpotTrack App &rarr;</a>
+  <a class="result-btn-secondary" href="/">Back to home</a>
 </div>

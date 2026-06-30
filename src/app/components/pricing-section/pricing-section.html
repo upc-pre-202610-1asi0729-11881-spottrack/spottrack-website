@@ -96,8 +96,10 @@
           </ul>
 
           <div class="card-footer">
-            <button class="cta-btn" [class.cta-popular]="plan.popular" (click)="onBuyNow(plan.key)">
-              {{ 'pricing.buyNow' | translate }}
+            <button class="cta-btn" [class.cta-popular]="plan.popular"
+                    [disabled]="loadingPlan !== null"
+                    (click)="onBuyNow(plan.key)">
+              {{ loadingPlan === plan.key ? '...' : ('pricing.buyNow' | translate) }}
             </button>
           </div>
 

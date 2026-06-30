@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -10,30 +10,36 @@ interface PlanConfig {
 }
 
 const PLAN_CONFIG: Record<string, PlanConfig> = {
-  basic:    { tier: 'BASIC',    amount: 69,  currency: 'usd' },
-  mid:      { tier: 'MID',      amount: 109, currency: 'usd' },
-  platinum: { tier: 'PLATINUM', amount: 189, currency: 'usd' },
+  basic:    { tier: 'BASIC',    amount: 69,  currency: 'USD' },
+  mid:      { tier: 'MID',      amount: 109, currency: 'USD' },
+  platinum: { tier: 'PLATINUM', amount: 189, currency: 'USD' },
 };
 
 @Injectable({ providedIn: 'root' })
 export class StripeService {
   constructor(private http: HttpClient) {}
 
-  async redirectToCheckout(planKey: string, userId: number = 1): Promise<void> {
+  async redirectToCheckout(planKey: string): Promise<void> {
     const config = PLAN_CONFIG[planKey];
-    if (!config) return;
+    if (!config) throw new Error(`Unknown plan: ${planKey}`);
 
-    const body = new HttpParams()
-      .set('userId', userId.toString())
-      .set('membershipTier', config.tier)
-      .set('amount', config.amount.toString())
-      .set('currency', config.currency);
+    const raw = sessionStorage.getItem('spottrack_session');
+    const session = raw ? JSON.parse(raw) : null;
+    if (!session?.userId || !session?.token) throw new Error('No active session. Please sign up first.');
 
-    const checkoutUrl = await firstValueFrom(
-      this.http.post(`${environment.backendUrl}/api/v1/payments`, body.toString(), {
-        headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' }),
-        responseType: 'text',
-      })
+    const headers = new HttpHeaders({ Authorization: `Bearer ${session.token}` });
+
+    const { checkoutUrl } = await firstValueFrom(
+      this.http.post<{ checkoutUrl: string }>(
+        `${environment.backendUrl}/api/v1/payments`,
+        {
+          userId: session.userId,
+          membershipTier: config.tier,
+          amount: config.amount,
+          currency: config.currency,
+        },
+        { headers }
+      )
     );
 
     window.location.href = checkoutUrl;

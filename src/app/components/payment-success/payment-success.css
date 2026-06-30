@@ -56,3 +56,18 @@ p {
 .result-btn:hover {
   opacity: 0.85;
 }
+
+.result-btn-secondary {
+  padding: 0.6rem 1.5rem;
+  color: #9ca3af;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.result-btn-secondary:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+}

@@ -1,0 +1,65 @@
+<div class="plans-page">
+  <div class="plans-container">
+
+    <div class="plans-header">
+      <a href="/#pricing" class="back-link">← Back to plans overview</a>
+      <h1 class="plans-title">Choose your plan</h1>
+      <p class="plans-subtitle">Select the plan that fits your gym. You can upgrade at any time.</p>
+    </div>
+
+    <div class="plans-grid">
+      @for (plan of plans; track plan.key) {
+        <div
+          class="plan-card"
+          [class.selected]="selectedKey === plan.key"
+          [class.popular]="plan.popular"
+          (click)="selectPlan(plan.key)"
+          role="button"
+          [attr.aria-pressed]="selectedKey === plan.key"
+        >
+          @if (plan.popular) {
+            <div class="popular-badge">Most Popular</div>
+          }
+
+          <div class="plan-head">
+            <h3 class="plan-name">{{ plan.name }}</h3>
+            <div class="plan-price">
+              <span class="price-value">${{ plan.price }}</span>
+              <span class="price-period">/month</span>
+            </div>
+          </div>
+
+          <ul class="plan-features">
+            @for (feature of plan.features; track feature) {
+              <li><span class="check">&#10003;</span> {{ feature }}</li>
+            }
+          </ul>
+
+          <div class="plan-indicator">
+            @if (selectedKey === plan.key) {
+              <span class="is-selected">Selected</span>
+            } @else {
+              <span class="not-selected">Click to select</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="proceed-section">
+      <button
+        class="proceed-btn"
+        [disabled]="loadingPlan !== null"
+        (click)="proceedToPayment()"
+      >
+        @if (loadingPlan) {
+          Redirecting to payment&hellip;
+        } @else {
+          Proceed to payment &mdash; ${{ selectedPlan.price }}/mo
+        }
+      </button>
+      <p class="secure-note">Secure payment powered by Stripe</p>
+    </div>
+
+  </div>
+</div>
