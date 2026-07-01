@@ -36,14 +36,6 @@ export class AuthService {
     );
   }
 
-  createClientProfile(userId: number, email: string, token: string): Observable<unknown> {
-    return this.http.post(
-      `${environment.backendUrl}/api/v1/profiles/clients`,
-      { userId, email },
-      { headers: new HttpHeaders({ Authorization: `Bearer ${token}` }) }
-    );
-  }
-
   updateClientProfile(info: PersonInfo, token: string): Observable<unknown> {
     return this.http.put(
       `${environment.backendUrl}/api/v1/profiles/clients/me`,

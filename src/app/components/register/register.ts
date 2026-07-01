@@ -81,9 +81,7 @@ export class RegisterComponent implements OnInit {
       switchMap(() => this.auth.signIn(username, password)),
       switchMap((res) => {
         this.auth.saveSession({ userId: res.id, username: res.username, token: res.token });
-        return this.auth.createClientProfile(res.id, username, res.token).pipe(
-          switchMap(() => this.auth.updateClientProfile({ firstName, lastName, phoneNumber, dni }, res.token))
-        );
+        return this.auth.updateClientProfile({ firstName, lastName, phoneNumber, dni }, res.token);
       })
     ).subscribe({
       next: () => {
