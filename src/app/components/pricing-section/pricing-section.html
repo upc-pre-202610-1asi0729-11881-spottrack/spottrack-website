@@ -52,7 +52,7 @@
 
     <div class="pricing-grid">
       @for (plan of plans; track plan.key; let i = $index) {
-        <div #planCard class="plan-card" [class.popular]="plan.popular" [style.--i]="i">
+        <div class="plan-wrapper">
 
           @if (plan.popular) {
             <div class="popular-badge">
@@ -61,48 +61,51 @@
             </div>
           }
 
-          <div class="card-head">
-            <h3 class="plan-name">{{ ('pricing.' + plan.key + '.name') | translate }}</h3>
-            <div class="plan-price">
-              <span class="price-value">{{ ('pricing.' + plan.key + '.price') | translate }}</span>
-              <span class="price-period">{{ 'pricing.perMonth' | translate }}</span>
+          <div #planCard class="plan-card" [class.popular]="plan.popular" [style.--i]="i">
+
+            <div class="card-head">
+              <h3 class="plan-name">{{ ('pricing.' + plan.key + '.name') | translate }}</h3>
+              <div class="plan-price">
+                <span class="price-value">{{ ('pricing.' + plan.key + '.price') | translate }}</span>
+                <span class="price-period">{{ 'pricing.perMonth' | translate }}</span>
+              </div>
             </div>
-          </div>
 
-          <!-- Animated graph -->
-          <div class="chart-wrap">
-            <span class="chart-label">Equipment Uptime</span>
-            <svg class="plan-chart" viewBox="0 0 200 64" preserveAspectRatio="none">
-              <line class="chart-ref" x1="0" y1="16" x2="200" y2="16"/>
-              <line class="chart-ref" x1="0" y1="32" x2="200" y2="32"/>
-              <line class="chart-ref" x1="0" y1="48" x2="200" y2="48"/>
-              <path class="chart-area" [attr.d]="plan.chartArea"/>
-              <polyline class="chart-line" [attr.points]="plan.chartLine"/>
-              @for (dot of getChartDots(plan.chartLine); track dot.x; let di = $index) {
-                @if (di === 0 || di === 3 || di === 6) {
-                  <circle class="chart-dot" [attr.cx]="dot.x" [attr.cy]="dot.y" r="2.5"/>
+            <!-- Animated graph -->
+            <div class="chart-wrap">
+              <span class="chart-label">Equipment Uptime</span>
+              <svg class="plan-chart" viewBox="0 0 200 64" preserveAspectRatio="none">
+                <line class="chart-ref" x1="0" y1="16" x2="200" y2="16"/>
+                <line class="chart-ref" x1="0" y1="32" x2="200" y2="32"/>
+                <line class="chart-ref" x1="0" y1="48" x2="200" y2="48"/>
+                <path class="chart-area" [attr.d]="plan.chartArea"/>
+                <polyline class="chart-line" [attr.points]="plan.chartLine"/>
+                @for (dot of getChartDots(plan.chartLine); track dot.x; let di = $index) {
+                  @if (di === 0 || di === 3 || di === 6) {
+                    <circle class="chart-dot" [attr.cx]="dot.x" [attr.cy]="dot.y" r="2.5"/>
+                  }
                 }
+              </svg>
+            </div>
+
+            <ul class="features-list">
+              @for (fk of plan.featureKeys; track fk) {
+                <li class="feature-item">
+                  <span class="check-icon">✓</span>
+                  {{ fk | translate }}
+                </li>
               }
-            </svg>
+            </ul>
+
+            <div class="card-footer">
+              <button class="cta-btn" [class.cta-popular]="plan.popular"
+                      [disabled]="loadingPlan !== null"
+                      (click)="onBuyNow(plan.key)">
+                {{ loadingPlan === plan.key ? '...' : ('pricing.buyNow' | translate) }}
+              </button>
+            </div>
+
           </div>
-
-          <ul class="features-list">
-            @for (fk of plan.featureKeys; track fk) {
-              <li class="feature-item">
-                <span class="check-icon">✓</span>
-                {{ fk | translate }}
-              </li>
-            }
-          </ul>
-
-          <div class="card-footer">
-            <button class="cta-btn" [class.cta-popular]="plan.popular"
-                    [disabled]="loadingPlan !== null"
-                    (click)="onBuyNow(plan.key)">
-              {{ loadingPlan === plan.key ? '...' : ('pricing.buyNow' | translate) }}
-            </button>
-          </div>
-
         </div>
       }
     </div>
