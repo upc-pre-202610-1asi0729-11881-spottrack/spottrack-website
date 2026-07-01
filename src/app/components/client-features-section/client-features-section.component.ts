@@ -19,8 +19,8 @@ export class ClientFeaturesSectionComponent implements AfterViewInit {
   @ViewChildren('clientFeatureCard') cards!: QueryList<ElementRef>;
 
   features: ClientFeature[] = [
-    { key: 'availabilityMap',   icon: 'monitor',   color: '#f7b731' },
-    { key: 'reservations',      icon: 'sensor',    color: '#40e0d0', featured: true },
+    { key: 'availabilityMap',   icon: 'monitor',   color: '#f7b731', featured: true },
+    { key: 'reservations',      icon: 'sensor',    color: '#40e0d0' },
     { key: 'smartAlternatives', icon: 'dashboard', color: '#4ade80' },
     { key: 'workoutRoutines',   icon: 'cloud',     color: '#f7b731' },
     { key: 'instantAlerts',     icon: 'alert',     color: '#40e0d0' },
