@@ -66,4 +66,8 @@ export class HeroSectionComponent implements AfterViewInit {
   navigateToApp(): void {
     window.open(this.appUrl, '_blank');
   }
+
+  navigateToClientSignup(): void {
+    window.open(`${this.appUrl}/register`, '_blank');
+  }
 }
