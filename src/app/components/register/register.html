@@ -75,6 +75,119 @@
         </div>
       </div>
 
+      <div class="section-label">Business information</div>
+
+      <div class="field-group">
+        <label for="companyName">Company name</label>
+        <input
+          id="companyName"
+          type="text"
+          formControlName="companyName"
+          placeholder="Acme S.A.C."
+        />
+        @if (companyNameCtrl.invalid && companyNameCtrl.touched) {
+          <span class="field-error">This field is required</span>
+        }
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label for="ruc">RUC</label>
+          <input
+            id="ruc"
+            type="text"
+            inputmode="numeric"
+            formControlName="ruc"
+            placeholder="20123456789"
+          />
+          @if (rucCtrl.invalid && rucCtrl.touched) {
+            <span class="field-error">Must be exactly 11 digits</span>
+          }
+        </div>
+        <div class="field-group">
+          <label for="legalType">Legal structure</label>
+          <select id="legalType" formControlName="legalType">
+            <option value="" disabled>Select a type</option>
+            @for (type of legalTypes; track type) {
+              <option [value]="type">{{ type }}</option>
+            }
+          </select>
+          @if (legalTypeCtrl.invalid && legalTypeCtrl.touched) {
+            <span class="field-error">This field is required</span>
+          }
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label for="companyPhone">Company phone</label>
+          <input
+            id="companyPhone"
+            type="tel"
+            inputmode="numeric"
+            formControlName="companyPhone"
+            placeholder="014567890"
+          />
+          @if (companyPhoneCtrl.invalid && companyPhoneCtrl.touched) {
+            <span class="field-error">Enter a valid phone number</span>
+          }
+        </div>
+        <div class="field-group">
+          <label for="companyEmail">Company email</label>
+          <input
+            id="companyEmail"
+            type="email"
+            formControlName="companyEmail"
+            placeholder="contact@company.com"
+          />
+          @if (companyEmailCtrl.invalid && companyEmailCtrl.touched) {
+            <span class="field-error">Enter a valid email address</span>
+          }
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="street">Street address</label>
+        <input
+          id="street"
+          type="text"
+          formControlName="street"
+          placeholder="Av. Javier Prado 123"
+        />
+        @if (streetCtrl.invalid && streetCtrl.touched) {
+          <span class="field-error">This field is required</span>
+        }
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label for="city">City</label>
+          <input
+            id="city"
+            type="text"
+            formControlName="city"
+            placeholder="Lima"
+          />
+          @if (cityCtrl.invalid && cityCtrl.touched) {
+            <span class="field-error">This field is required</span>
+          }
+        </div>
+        <div class="field-group">
+          <label for="district">District</label>
+          <input
+            id="district"
+            type="text"
+            formControlName="district"
+            placeholder="San Isidro"
+          />
+          @if (districtCtrl.invalid && districtCtrl.touched) {
+            <span class="field-error">This field is required</span>
+          }
+        </div>
+      </div>
+
+      <div class="section-label">Account credentials</div>
+
       <div class="field-group">
         <label for="username">Email address</label>
         <input

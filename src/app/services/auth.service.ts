@@ -9,11 +9,19 @@ export interface UserSession {
   token: string;
 }
 
-export interface PersonInfo {
+export interface AdminProfileInfo {
   firstName: string;
   lastName: string;
   phoneNumber: string;
   dni: string;
+  companyName: string;
+  ruc: string;
+  legalType: string;
+  companyPhone: string;
+  companyEmail: string;
+  street: string;
+  city: string;
+  district: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -22,9 +30,12 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
+  // Anyone registering through the landing page is signing up to run a gym
+  // on SpotTrack, so this always grants ROLE_ADMIN via the business sign-up
+  // endpoint rather than the default ROLE_CLIENT one.
   signUp(username: string, password: string): Observable<{ id: number; username: string; roles: string[] }> {
     return this.http.post<{ id: number; username: string; roles: string[] }>(
-      `${environment.backendUrl}/api/v1/authentication/sign-up`,
+      `${environment.backendUrl}/api/v1/authentication/sign-up-business`,
       { username, password }
     );
   }
@@ -36,9 +47,9 @@ export class AuthService {
     );
   }
 
-  updateClientProfile(info: PersonInfo, token: string): Observable<unknown> {
+  updateAdminProfile(info: AdminProfileInfo, token: string): Observable<unknown> {
     return this.http.put(
-      `${environment.backendUrl}/api/v1/profiles/clients/me`,
+      `${environment.backendUrl}/api/v1/profiles/admins/me`,
       info,
       { headers: new HttpHeaders({ Authorization: `Bearer ${token}` }) }
     );
