@@ -5,6 +5,9 @@
     "features": "Funciones",
     "pricing": "Precios",
     "login": "Iniciar Sesión",
+    "signupClientHint": "¿No eres una empresa?",
+    "signupClient": "Regístrate como cliente",
+    "signupClientTooltip": "Regístrate como cliente para gestionar tus rutinas de entrenamiento, ver la disponibilidad de equipos del gimnasio y hacer reservas.",
     "freeDemo": "Demo Gratis"
   },
   "hero": {
@@ -37,6 +40,8 @@
     }
   },
   "solution": {
+    "badge": "Para Negocios de Gimnasios",
+    "featuredLabel": "Destacado",
     "title": "La Solución",
     "subtitle": "SpotTrack: Gestión inteligente todo en uno",
     "iotSensors": {
@@ -62,6 +67,35 @@
     "jwtSecurity": {
       "title": "Seguridad JWT",
       "description": "Autenticación robusta con tokens JWT para proteger datos sensibles de clientes y operaciones."
+    }
+  },
+  "clientSolution": {
+    "badge": "Para Miembros del Gimnasio",
+    "title": "Diseñado para tu Entrenamiento",
+    "subtitle": "Todo lo que un asistente frecuente al gimnasio necesita para entrenar sin perder tiempo",
+    "availabilityMap": {
+      "title": "Mapa de Disponibilidad en Tiempo Real",
+      "description": "Consulta qué máquinas están libres, ocupadas o reservadas en tu gimnasio, actualizado cada segundo."
+    },
+    "reservations": {
+      "title": "Reserva de Equipos",
+      "description": "Reserva una máquina con anticipación y cuenta con una ventana de activación antes de que se libere."
+    },
+    "smartAlternatives": {
+      "title": "Alternativas Inteligentes",
+      "description": "Si tu máquina está ocupada, recibe sugerencias instantáneas de equipos similares cercanos."
+    },
+    "workoutRoutines": {
+      "title": "Rutinas Personalizadas",
+      "description": "Crea y sigue rutinas de entrenamiento adaptadas a tus objetivos, guardadas en tu perfil."
+    },
+    "instantAlerts": {
+      "title": "Notificaciones Instantáneas",
+      "description": "Recibe una alerta en el momento en que tu equipo reservado o tu máquina favorita esté disponible."
+    },
+    "memberProfile": {
+      "title": "Membresía y Recompensas",
+      "description": "Sigue tu plan, puntos acumulados e historial de actividad, todo protegido con autenticación JWT."
     }
   },
   "pricing": {

@@ -5,6 +5,9 @@
     "features": "Features",
     "pricing": "Pricing",
     "login": "Log In",
+    "signupClientHint": "Not a business?",
+    "signupClient": "Sign up as a client",
+    "signupClientTooltip": "Sign up as a client to manage your workout routines, check gym equipment availability, and make reservations.",
     "freeDemo": "Free Demo"
   },
   "hero": {
@@ -37,6 +40,8 @@
     }
   },
   "solution": {
+    "badge": "For Gym Businesses",
+    "featuredLabel": "Featured",
     "title": "The Solution",
     "subtitle": "SpotTrack: All-in-one intelligent management",
     "iotSensors": {
@@ -62,6 +67,35 @@
     "jwtSecurity": {
       "title": "JWT Security",
       "description": "Robust authentication with JWT tokens to protect sensitive client data and operations."
+    }
+  },
+  "clientSolution": {
+    "badge": "For Gym Members",
+    "title": "Built for Your Training",
+    "subtitle": "Everything a frequent gym-goer needs to train without wasted time",
+    "availabilityMap": {
+      "title": "Real-Time Availability Map",
+      "description": "Check which machines are free, occupied, or reserved at your gym, updated every second."
+    },
+    "reservations": {
+      "title": "Equipment Reservations",
+      "description": "Reserve a machine ahead of time and get a short activation window before it's released back to the gym."
+    },
+    "smartAlternatives": {
+      "title": "Smart Alternatives",
+      "description": "If your machine is busy, get instant suggestions for similar equipment nearby."
+    },
+    "workoutRoutines": {
+      "title": "Personalized Routines",
+      "description": "Build and track workout routines tailored to your goals, saved to your profile."
+    },
+    "instantAlerts": {
+      "title": "Instant Notifications",
+      "description": "Get notified the moment your reserved equipment or a favorite machine becomes available."
+    },
+    "memberProfile": {
+      "title": "Membership & Rewards",
+      "description": "Track your plan, earned points, and activity history, all secured with JWT authentication."
     }
   },
   "pricing": {
