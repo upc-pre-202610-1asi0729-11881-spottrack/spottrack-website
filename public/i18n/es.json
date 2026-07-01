@@ -5,7 +5,9 @@
     "features": "Funciones",
     "pricing": "Precios",
     "login": "Iniciar Sesión",
-    "signupClient": "Regístrate como Miembro",
+    "signupClientHint": "¿No eres una empresa?",
+    "signupClient": "Regístrate como cliente",
+    "signupClientTooltip": "Regístrate como cliente para gestionar tus rutinas de entrenamiento, ver la disponibilidad de equipos del gimnasio y hacer reservas.",
     "freeDemo": "Demo Gratis"
   },
   "hero": {

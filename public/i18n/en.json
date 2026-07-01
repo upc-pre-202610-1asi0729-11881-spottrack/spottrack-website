@@ -5,7 +5,9 @@
     "features": "Features",
     "pricing": "Pricing",
     "login": "Log In",
-    "signupClient": "Sign up as a Member",
+    "signupClientHint": "Not a business?",
+    "signupClient": "Sign up as a client",
+    "signupClientTooltip": "Sign up as a client to manage your workout routines, check gym equipment availability, and make reservations.",
     "freeDemo": "Free Demo"
   },
   "hero": {
