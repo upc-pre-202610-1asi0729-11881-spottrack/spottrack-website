@@ -40,6 +40,10 @@ export class HeroSectionComponent implements AfterViewInit {
   btnStates = Array.from({ length: 4 }, () => signal<'normal' | 'hovered'>('normal'));
   benefitKeys = [0, 1, 2, 3].map(i => `hero.benefits.${i}`);
   isScrolled = signal(false);
+  menuOpen = signal(false);
+
+  toggleMenu(): void { this.menuOpen.update(v => !v); }
+  closeMenu(): void  { this.menuOpen.set(false); }
 
   ngAfterViewInit(): void {
     const video = this.heroBgVideo?.nativeElement;
@@ -52,6 +56,7 @@ export class HeroSectionComponent implements AfterViewInit {
   @HostListener('window:scroll')
   onScroll() {
     this.isScrolled.set(window.scrollY > 20);
+    if (this.menuOpen()) this.menuOpen.set(false);
   }
 
   scrollToSection(id: string): void {

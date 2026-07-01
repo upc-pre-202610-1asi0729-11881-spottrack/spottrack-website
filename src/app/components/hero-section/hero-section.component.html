@@ -27,9 +27,41 @@
     </div>
   </nav>
 
-  <div class="language-switcher">
+  <div class="header-right">
     <app-language-switcher></app-language-switcher>
+    <button class="hamburger-btn" [class.open]="menuOpen()" (click)="toggleMenu()" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
+
+  @if (menuOpen()) {
+    <div class="mobile-menu">
+      <button class="mobile-nav-btn" (click)="scrollToSection('hero'); closeMenu()">
+        {{ 'nav.about' | translate }}
+      </button>
+      <button class="mobile-nav-btn" (click)="scrollToSection('features'); closeMenu()">
+        {{ 'nav.features' | translate }}
+      </button>
+      <button class="mobile-nav-btn" (click)="scrollToSection('pricing'); closeMenu()">
+        {{ 'nav.pricing' | translate }}
+      </button>
+      <button class="mobile-nav-btn" (click)="scrollToSection('contacto'); closeMenu()">
+        {{ 'contact.title' | translate }}
+      </button>
+      <div class="mobile-menu-divider"></div>
+      <div class="mobile-menu-actions">
+        <button class="mobile-signup-btn" (click)="navigateToClientSignup(); closeMenu()">
+          <span class="client-signup-btn__hint">{{ 'nav.signupClientHint' | translate }}</span>
+          <span class="client-signup-btn__label">{{ 'nav.signupClient' | translate }}</span>
+        </button>
+        <button class="mobile-login-btn" (click)="navigateToApp(); closeMenu()">
+          {{ 'nav.login' | translate }}
+        </button>
+      </div>
+    </div>
+  }
 </header>
 
 <section class="hero-section" id="hero">
