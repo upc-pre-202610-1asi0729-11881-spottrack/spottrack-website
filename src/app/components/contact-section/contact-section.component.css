@@ -450,6 +450,8 @@
    =========================== */
 
 @media (max-width: 900px) {
+  .contact-section   { padding-top: 80px; }
+  .contact-container { padding: 0 32px; }
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -460,8 +462,8 @@
 }
 
 @media (max-width: 600px) {
-  .contact-section  { padding-top: 80px; }
-  .contact-container { padding: 0 24px; }
-  .contact-title    { font-size: 2rem; }
-  .form-card        { padding: 24px; }
+  .contact-section   { padding-top: 60px; }
+  .contact-container { padding: 0 20px; }
+  .contact-title     { font-size: 1.9rem; }
+  .form-card         { padding: 22px; }
 }

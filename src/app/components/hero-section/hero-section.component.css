@@ -526,3 +526,52 @@
   0%, 100% { transform: translateZ(160px) rotateX(0deg)  rotateY(0deg);   }
   50%       { transform: translateZ(340px) rotateX(18deg) rotateY(-18deg); }
 }
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+/* Large tablet — tighten spacing */
+@media (max-width: 1024px) {
+  .hero-header  { padding: 0 32px; }
+  .hero-wrapper { padding: 60px 40px; gap: 40px; }
+}
+
+/* Tablet — collapse nav, stack hero columns */
+@media (max-width: 900px) {
+  /* Header */
+  .hero-header  { padding: 0 24px; }
+  .navbar-button { display: none; }   /* hide text nav links; keep login-div */
+  .hero-navbar  { justify-content: flex-end; }
+
+  /* Hero two-col → single col */
+  .hero-wrapper {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 48px 28px;
+  }
+  .hero-left     { align-items: center; text-align: center; }
+  .hero-cta      { justify-content: center; }
+  .hero-benefits { justify-content: center; }
+  .hero-right    { max-width: 520px; margin: 0 auto; width: 100%; }
+  .mockup-frame  { transform: none; }         /* drop 3-D tilt on tablet */
+}
+
+/* Small mobile */
+@media (max-width: 640px) {
+  .hero-header    { padding: 0 16px; }
+  .client-signup-btn { display: none; }       /* too wide for small screens */
+  .hero-wrapper   { padding: 40px 20px; }
+  .hero-headline h1 { font-size: 38px; letter-spacing: -0.5px; }
+  .hero-subheadline { font-size: 14px; }
+  .hero-left      { gap: 24px; }
+  .hero-right     { display: none; }          /* hide dashboard mockup below 640px */
+  .hero-section   { min-height: auto; padding: 60px 0; }
+}
+
+/* Extra small */
+@media (max-width: 400px) {
+  .hero-headline h1        { font-size: 30px; }
+  .start-btn, .demo-btn    { padding: 11px 20px; font-size: 14px; }
+  .login-btn               { padding: 8px 14px; font-size: 13px; }
+}
