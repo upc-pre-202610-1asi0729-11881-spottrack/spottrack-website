@@ -1,32 +1,21 @@
-<section class="features-section" id="features">
+<section class="client-features-section" id="client-features">
 
   <!-- Ambient background shapes -->
-  <div class="feat-bg feat-bg-yellow"></div>
   <div class="feat-bg feat-bg-teal"></div>
-  <div class="feat-bg feat-bg-yellow-bottom"></div>
-
-  <!-- Floating weights -->
-  <img aria-hidden="true" class="weight-float wf-1" src="assets/weights.png" alt="">
-  <img aria-hidden="true" class="weight-float wf-2" src="assets/weights.png" alt="">
-  <img aria-hidden="true" class="weight-float wf-3" src="assets/weights.png" alt="">
-  <img aria-hidden="true" class="weight-float wf-4" src="assets/weights.png" alt="">
-  <img aria-hidden="true" class="weight-float wf-5" src="assets/weights.png" alt="">
-  <img aria-hidden="true" class="weight-float wf-6" src="assets/weights.png" alt="">
-  <img aria-hidden="true" class="weight-float wf-7" src="assets/weights.png" alt="">
-  <img aria-hidden="true" class="weight-float wf-8" src="assets/weights.png" alt="">
+  <div class="feat-bg feat-bg-yellow"></div>
 
   <div class="features-container">
 
     <div class="features-header">
-      <div class="section-badge">{{ 'solution.badge' | translate }}</div>
-      <h2 class="features-title">{{ 'solution.title' | translate }}</h2>
-      <p class="features-subtitle">{{ 'solution.subtitle' | translate }}</p>
+      <div class="section-badge">{{ 'clientSolution.badge' | translate }}</div>
+      <h2 class="features-title">{{ 'clientSolution.title' | translate }}</h2>
+      <p class="features-subtitle">{{ 'clientSolution.subtitle' | translate }}</p>
     </div>
 
     <div class="features-grid">
       @for (feature of features; track feature.key; let i = $index) {
         <div
-          #featureCard
+          #clientFeatureCard
           class="feature-card"
           [class.featured]="feature.featured"
           [style.--i]="i"
@@ -72,8 +61,8 @@
             </div>
           }
 
-          <h3 class="card-title">{{ ('solution.' + feature.key + '.title') | translate }}</h3>
-          <p class="card-text">{{ ('solution.' + feature.key + '.description') | translate }}</p>
+          <h3 class="card-title">{{ ('clientSolution.' + feature.key + '.title') | translate }}</h3>
+          <p class="card-text">{{ ('clientSolution.' + feature.key + '.description') | translate }}</p>
 
         </div>
       }
